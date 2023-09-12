@@ -1,0 +1,33 @@
+@tailwind base;
+
+body{
+   @apply text-gray-800
+}
+
+
+
+@tailwind components;
+
+.btn
+{
+    @apply text-white bg-purple-600 hover:bg-purple-800 rounded-md shadow-md my-2 px-2 py-1 cursor-pointer duration-200;
+}
+
+
+@tailwind utilities;
+
+
+
+.login {
+   height: calc(100vh - 50px);
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   font-family: 'Varela Round', sans-serif;
+   background-image: linear-gradient(
+       rgba(222, 237, 244, 0.9),
+       rgba(231, 233, 235, 0.9)
+   ), url(../../assates/login-img2.jpg);
+   background-size: cover;
+}
