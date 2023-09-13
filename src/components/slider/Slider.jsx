@@ -54,7 +54,7 @@ const Slider = () => {
                   <p className="text-[20px] text-white md:text-[25px]">Wide Collection</p>
                   <h2 className="font-bold text-white text-[25px] md:text-[48px]">{slide.content.h2}</h2>
                   <p className="text-[20px] text-white md:text-[30px] font-bold">{slide.content.p}</p>
-                  <Link to="/category-page">
+                  <Link to="/category">
                     <button className="btn bg-[#865DFF] mb-7">Shop Now</button>
                   </Link>
                 </div>

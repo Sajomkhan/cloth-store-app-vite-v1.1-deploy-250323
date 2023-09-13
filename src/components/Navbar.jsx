@@ -8,7 +8,6 @@ import Carts from "../features/Carts";
 import { useState } from "react";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import CloseIcon from "@mui/icons-material/Close";
-import { Close } from "@mui/icons-material";
 
 const Navbar = () => {
   const [manubar, setManubar] = useState(false);
@@ -29,33 +28,13 @@ const Navbar = () => {
   return (
     <nav className="fixed w-full top-0 left-0 z-30 flex flex-col bg-white shadow-md">
       <Announce />
-      <div className="flex md:justify-between px-6 md:px-32 md:py-2 relative">
+      <div className="flex justify-between px-3 md:px-32 md:py-2 relative">
         {/* ---------------Logo for destop--------------*/}
         <Link to="/">
           <div className="w-40 font-bold text-2xl md:text-3xl cursor-pointer hover:text-blue-700">
             Cloth Store
           </div>
         </Link>
-
-        <div className="md:hidden self-end">
-        <Badge
-          badgeContent={totalQTY}
-          color="primary"
-          onClick={onCartToggle}
-          className="nav_link"
-        >
-          <ShoppingCartOutlined/>
-        </Badge>
-        </div>
-
-
-
-        <div
-          className="md:hidden text-lg absolute z-10 right-2 px-3"
-          onClick={handleManubarToggle}
-        >
-          <MoreVertIcon />
-        </div>
 
         {/* -------------For Destop Moode---------- */}
         <div className="hidden md:flex gap-4 items-center md:justify-end">
@@ -65,28 +44,37 @@ const Navbar = () => {
           <Link to="/category" className="nav_link">
             Category
           </Link>
-          <Link to="/login" className="nav_link">
-            Signin
-          </Link>
-          <Badge
-            badgeContent={totalQTY}
-            color="primary"
+          <div
             onClick={onCartToggle}
             className="nav_link"
           >
-            <ShoppingCartOutlined />
-          </Badge>
+            Shop
+          </div>
+          <Link to="/login" className="nav_link">
+            Signin
+          </Link>
+          <button type="button" onClick={onCartToggle}>
+            <Badge badgeContent={totalQTY} color="primary">
+              <ShoppingCartOutlined />
+            </Badge>
+          </button>
         </div>
 
         {/* -------------For Mobile Moode---------- */}
         {manubar && (
-          <div className="md:hidden w-full">
-            <div className="w-4/6 absolute z-30 top-8 left-0 flex flex-col items-center bg-white shadow-md rounded-md text-xl font-semibold">
+          <div
+            onClick={handleManubarToggle}
+            className="md:hidden absolute z-30 top-8 left-0 w-full h-screen bg-transparent"
+          >
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className="w-4/6 flex flex-col items-center bg-white shadow-md rounded-md text-xl font-semibold"
+            >
               <div
                 className="w-full flex justify-end text-lg bg-blue-600 text-white py-1 px-3"
                 onClick={handleManubarToggle}
               >
-                <Close />
+                <CloseIcon />
               </div>
               <Link
                 to="/"
@@ -100,6 +88,12 @@ const Navbar = () => {
               >
                 Category
               </Link>
+              <div
+                onClick={onCartToggle}
+                className="w-full text-center nav_link border-y-2 border-gray-400/20 py-8"
+              >
+                Buy-Now
+              </div>
               <Link
                 to="/login"
                 className="w-full text-center nav_link border-y-2 border-gray-400/20 py-8"
@@ -107,9 +101,21 @@ const Navbar = () => {
                 Signin
               </Link>
             </div>
-            <Carts />
           </div>
         )}
+        <div className="md:hidden flex gap-3">
+          {/* --------------Badge for mobile--------------- */}
+          <button type="button" onClick={onCartToggle} className=" self-end">
+            <Badge badgeContent={totalQTY} color="primary" className="nav_link">
+              <ShoppingCartOutlined />
+            </Badge>
+          </button>
+          {/* --------------Vartical Bar for mobile--------------- */}
+          <div className="text-lg px-3" onClick={handleManubarToggle}>
+            <MoreVertIcon />
+          </div>
+        </div>
+        <Carts />
       </div>
     </nav>
   );
