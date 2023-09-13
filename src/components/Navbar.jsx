@@ -37,14 +37,18 @@ const Navbar = () => {
           </div>
         </Link>
 
+        <div className="md:hidden self-end">
         <Badge
           badgeContent={totalQTY}
           color="primary"
           onClick={onCartToggle}
-          className="md:hidden nav_link self-end"
+          className="nav_link"
         >
           <ShoppingCartOutlined/>
         </Badge>
+        </div>
+
+
 
         <div
           className="md:hidden text-lg absolute z-10 right-2 px-3"
