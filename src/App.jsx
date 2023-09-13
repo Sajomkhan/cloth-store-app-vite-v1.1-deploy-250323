@@ -30,10 +30,10 @@ function App() {
             <Route index element={<Home />} />
             <Route path="/product" element={<SingleProduct />} />
             <Route path="/category" element={<CategoryPage />} />
+        </Route>
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/*" element={<Error />} />
-        </Route>
       </Routes>
     </BrowserRouter>
   );

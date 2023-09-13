@@ -1,63 +1,101 @@
-import React, { Component } from "react";
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-export default class Login extends Component {
-  //style
-  inputStyle =
-    "border-[2px] border-silver rounded-lg outline-[#8a4af3] p-2 focus:border-[#8a4af3] ease-linear duration-200 ";
+const Login = () => {
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
 
-  //states
-  state = {
-    email: "",
-    pass: "",
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
-  handleChange = (evt) => {
-    const fields = Object.assign({}, this.state);
-    fields[evt.target.name] = evt.target.value;
-    this.setState({ ...fields });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // You can add your login logic here
+    // For example, you can send the form data to a server for authentication
+    console.log(formData);
   };
 
-  render() {
-    return (
-      <div className="flex justify-center w-[100%] h-[100vh] bg-[#f5f1fa]">
-        <div className="flex flex-col absolute top-[30%] bg-white shadow-lg border-silver border-[2px] rounded-lg p-5 md:w-[40%] mobile:w-[90%]">
-          <text className="text-2xl ">LogIn</text>
-
-          {/* First Name Last Name */}
-          <div className="flex mt-7">
-            {/* Email */}
+  return (
+    <div className="login min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="bg-white p-8 rounded shadow-md w-96">
+        <h2 className="text-2xl font-semibold mb-4">Login</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <label htmlFor="username" className="block text-gray-700 font-medium mb-2">
+              Username
+            </label>
             <input
-              className={this.inputStyle + ` mt-2 w-[100%]`}
-              name="email"
+              type="text"
+              id="username"
+              name="username"
+              value={formData.username}
+              onChange={handleChange}
+              className="w-full p-2 border rounded focus:outline-none focus:border-blue-500"
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-gray-700 font-medium mb-2">
+              Email
+            </label>
+            <input
               type="email"
-              placeholder="Email"
-              onChange={this.handleChange}
-              value={this.state.email}
-              required
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className="w-full p-2 border rounded focus:outline-none focus:border-blue-500"
             />
           </div>
-          {/* Password */}
-          <div className="flex mt-7">
+          <div className="mb-4">
+            <label htmlFor="password" className="block text-gray-700 font-medium mb-2">
+              Password
+            </label>
             <input
-              className={this.inputStyle + ` w-[100%]`}
-              name="pass"
               type="password"
-              placeholder="Password"
-              onChange={this.handleChange}
-              value={this.state.pass}
-              required
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              className="w-full p-2 border rounded focus:outline-none focus:border-blue-500"
             />
           </div>
-          {/* Submit button */}
-          <a href="/">
+          <div className="mb-4">
+            <label htmlFor="confirmPassword" className="block text-gray-700 font-medium mb-2">
+              Confirm Password
+            </label>
             <input
-              type="button"
-              className="mt-5 px-4 flex justify-center bg-[#8a4af3] text-white font-medium rounded-md p-2 hover:bg-white hover:text-[#8a4af3] hover:scale-[1.0.5] hover:border-[2px] hover:shadow-md hover:border-[#8a4af3] ease-linear duration-200"
-              value="Log in"
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              className="w-full p-2 border rounded focus:outline-none focus:border-blue-500"
             />
-          </a>
+          </div>
+          <button
+            type="submit"
+            className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+          >
+            Login
+          </button>
+        </form>
+        <div className="mt-4">
+          <p className="text-gray-600">
+            Don't have an account?{' '}
+            <Link to="/register" className="text-blue-500 hover:underline">
+              Register here
+            </Link>
+          </p>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+export default Login;
