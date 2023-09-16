@@ -29,6 +29,10 @@ const Navbar = () => {
     <nav className="fixed w-full top-0 left-0 z-30 flex flex-col bg-white shadow-md">
       <Announce />
       <div className="flex justify-between px-3 md:px-32 md:py-2 relative">
+        
+        {/* ---------------Carts--------------*/}
+        <Carts />
+
         {/* ---------------Logo for destop--------------*/}
         <Link to="/">
           <div className="w-40 font-bold text-2xl md:text-3xl cursor-pointer hover:text-blue-700">
@@ -115,7 +119,6 @@ const Navbar = () => {
             <MoreVertIcon />
           </div>
         </div>
-        <Carts />
       </div>
     </nav>
   );
