@@ -29,7 +29,6 @@ const Navbar = () => {
     <nav className="fixed w-full top-0 left-0 z-30 flex flex-col bg-white shadow-md">
       <Announce />
       <div className="flex justify-between px-3 md:px-32 md:py-2 relative">
-        
         {/* ---------------Carts--------------*/}
         <Carts />
 
@@ -48,10 +47,7 @@ const Navbar = () => {
           <Link to="/category" className="nav_link">
             Category
           </Link>
-          <div
-            onClick={onCartToggle}
-            className="nav_link"
-          >
+          <div onClick={onCartToggle} className="nav_link">
             Shop
           </div>
           <Link to="/login" className="nav_link">
