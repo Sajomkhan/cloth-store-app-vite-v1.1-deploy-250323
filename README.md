@@ -1,10 +1,9 @@
 # A awesome Ecommerce App with React Vite, Redux, Tailwindcss & Material-UI
 ### Full Mobile Responsive App
 
-#### Go to Live Project: https://ecommerce-store-react-redux-tailwind.netlify.app/
+#### Go to Live Project: https://cloth-store-app.netlify.app/
 
 [![image](./public/image.png)](https://cloth-store-app.netlify.app/)
-<!-- [![image](./public/image.jpg)](https://cloth-store-app.netlify.app/) -->
 
 ### Full Mobile Responsive Web Page
 
